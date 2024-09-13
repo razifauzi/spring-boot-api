@@ -13,7 +13,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@CrossOrigin("http://localhost:5173")
+@CrossOrigin("http://localhost:3000")
 @RequestMapping("/api/expenses") // Add a base URL for consistency
 public class ExpensesController {
 
