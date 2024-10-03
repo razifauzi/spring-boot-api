@@ -2,7 +2,6 @@ package masjidmuar.project.bms.controller;
 
 import masjidmuar.project.bms.model.Expenses;
 import masjidmuar.project.bms.repository.ExpensesRepository;
-import masjidmuar.project.bms.repository.ExpensesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

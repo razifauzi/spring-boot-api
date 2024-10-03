@@ -2,8 +2,6 @@ package masjidmuar.project.bms.model;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -34,9 +32,6 @@ public class User {
     @Column(nullable = false, columnDefinition = "VARCHAR(255) DEFAULT ''", unique = true)
     private String username = "";
 
-    @Column(nullable = false)
-    private String password;
-
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdts;
 
@@ -45,14 +40,13 @@ public class User {
         this.id = UUID.randomUUID(); // Generate UUID by default
     }
 
-    public User(String name, int role, String description, String email, String username, String password) {
+    public User(String name, int role, String description, String email, String username) {
         this.id = UUID.randomUUID(); // Generate UUID by default
         this.name = name;
         this.role = role;
         this.description = description;
         this.email = email;
         this.username = username;
-        this.password = encodePassword(password); // Hash the password before storing it
     }
 
     @PrePersist
@@ -60,11 +54,6 @@ public class User {
         this.createdts = LocalDateTime.now(); // Automatically set created timestamp
     }
 
-    // Method to hash the password using BCrypt
-    private String encodePassword(String rawPassword) {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        return passwordEncoder.encode(rawPassword);
-    }
 
     // Getters and Setters
     public UUID getId() {
@@ -113,14 +102,6 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String rawPassword) {
-        this.password = encodePassword(rawPassword); // Hash and set the new password
     }
 
     public LocalDateTime getCreatedts() {

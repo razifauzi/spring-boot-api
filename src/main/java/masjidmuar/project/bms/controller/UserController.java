@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -26,18 +25,20 @@ public class UserController {
             return userRepository.findAll();
         }
 
-        // Get income by ID
-        @GetMapping("/{id}")
-        public ResponseEntity<User> getUserById(@PathVariable UUID id) {
-            Optional<User> user = userRepository.findById(id);
-            return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-        }
+    // Get user by ID
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable UUID id) {
+        Optional<User> user = userRepository.findById(id);
+        return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
 
-        // Create a new income
-        @PostMapping
-        public User createUser(@RequestBody User user) {
-            return userRepository.save(user);
-        }
+    // Create a new user
+    @PostMapping("add")
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        User savedUser = userRepository.save(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
+    }
+
 
         // Update an existing income
         @PutMapping("/{id}")
