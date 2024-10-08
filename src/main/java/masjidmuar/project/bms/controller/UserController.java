@@ -25,19 +25,19 @@ public class UserController {
             return userRepository.findAll();
         }
 
-    // Get user by ID
-    @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable UUID id) {
-        Optional<User> user = userRepository.findById(id);
-        return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-    }
+        // Get user by ID
+        @GetMapping("/{id}")
+        public ResponseEntity<User> getUserById(@PathVariable UUID id) {
+            Optional<User> user = userRepository.findById(id);
+            return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        }
 
-    // Create a new user
-    @PostMapping("add")
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        User savedUser = userRepository.save(user);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
-    }
+        // Create a new user
+        @PostMapping
+        public ResponseEntity<User> createUser(@RequestBody User user) {
+            User savedUser = userRepository.save(user);
+            return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
+        }
 
 
         // Update an existing income

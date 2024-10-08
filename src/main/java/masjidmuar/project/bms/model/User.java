@@ -2,6 +2,7 @@ package masjidmuar.project.bms.model;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
+
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -26,10 +27,10 @@ public class User {
     @Column(nullable = false, columnDefinition = "TEXT DEFAULT ''")
     private String description = "";
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(255) DEFAULT ''", unique = true)
+    @Column(nullable = false, columnDefinition = "VARCHAR(255) DEFAULT ''")
     private String email = "";
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(255) DEFAULT ''", unique = true)
+    @Column(nullable = false, columnDefinition = "VARCHAR(255) DEFAULT ''")
     private String username = "";
 
     @Column(nullable = false, updatable = false)
@@ -40,7 +41,7 @@ public class User {
         this.id = UUID.randomUUID(); // Generate UUID by default
     }
 
-    public User(String name, int role, String description, String email, String username) {
+    public User(String name, int role, String description,String email,String username) {
         this.id = UUID.randomUUID(); // Generate UUID by default
         this.name = name;
         this.role = role;
@@ -53,7 +54,6 @@ public class User {
     protected void onCreate() {
         this.createdts = LocalDateTime.now(); // Automatically set created timestamp
     }
-
 
     // Getters and Setters
     public UUID getId() {
