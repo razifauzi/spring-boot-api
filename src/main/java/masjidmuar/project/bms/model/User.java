@@ -1,8 +1,5 @@
 package masjidmuar.project.bms.model;
-
 import jakarta.persistence.*;
-import org.hibernate.annotations.GenericGenerator;
-
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -10,12 +7,7 @@ import java.util.UUID;
 @Table(name = "MUAR_USER")
 public class User {
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
-    @Column(updatable = false, nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO) 
     private UUID id;
 
     @Column(nullable = false, columnDefinition = "VARCHAR(255) DEFAULT ''")

@@ -1,8 +1,8 @@
 package masjidmuar.project.bms.model;
-
 import jakarta.persistence.*;
-import org.hibernate.annotations.GenericGenerator;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -10,12 +10,7 @@ import java.util.UUID;
 @Table(name = "MUAR_INCOME")
 public class Income {
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
-    @Column(updatable = false, nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO) 
     private UUID id;
 
     @Column(nullable = false, columnDefinition = "VARCHAR(255) DEFAULT ''")
@@ -27,6 +22,12 @@ public class Income {
     @Column(nullable = false, columnDefinition = "TEXT DEFAULT ''")
     private String description = "";
 
+    @Column(nullable = false, precision = 19, scale = 2) 
+    private BigDecimal amount = BigDecimal.ZERO; 
+
+    @Column(nullable = false)
+    private LocalDate date;
+
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdts;
 
@@ -35,11 +36,13 @@ public class Income {
         this.id = UUID.randomUUID(); // Generate UUID by default
     }
 
-    public Income(String name, int frequency, String description) {
+    public Income(String name, int frequency, String description, BigDecimal amount, LocalDate date) {
         this.id = UUID.randomUUID(); // Generate UUID by default
         this.name = name;
         this.frequency = frequency;
         this.description = description;
+        this.amount = amount; 
+        this.date = date; 
     }
 
     @PrePersist
@@ -80,6 +83,22 @@ public class Income {
         this.description = description;
     }
 
+    public BigDecimal getAmount() {
+        return amount; // Getter for amount
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount; // Setter for amount
+    }
+
+    public LocalDate getDate() {
+        return date; // Getter for date
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date; // Setter for date
+    }
+    
     public LocalDateTime getCreatedts() {
         return createdts;
     }
