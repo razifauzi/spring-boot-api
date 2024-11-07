@@ -16,6 +16,9 @@ public class User {
     @Column(nullable = false, columnDefinition = "INTEGER DEFAULT 0")
     private int role = 0;
 
+    @Column(nullable = false, columnDefinition = "INTEGER DEFAULT 0")
+    private int recstatus = 0;
+
     @Column(nullable = false, columnDefinition = "TEXT DEFAULT ''")
     private String description = "";
 
@@ -33,10 +36,11 @@ public class User {
         this.id = UUID.randomUUID(); // Generate UUID by default
     }
 
-    public User(String name, int role, String description,String email,String username) {
+    public User(String name, int role,int recstatus,String description,String email,String username) {
         this.id = UUID.randomUUID(); // Generate UUID by default
         this.name = name;
         this.role = role;
+        this.recstatus = 2;
         this.description = description;
         this.email = email;
         this.username = username;
@@ -70,6 +74,14 @@ public class User {
 
     public void setRole(int role) {
         this.role = role;
+    }
+
+    public int getRecStatus() {
+        return recstatus;
+    }
+
+    public void setRecStatus(int recstatus) {
+        this.recstatus = recstatus;
     }
 
     public String getDescription() {

@@ -31,18 +31,22 @@ public class Income {
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdts;
 
+    @Column(nullable = false, columnDefinition = "VARCHAR(255) DEFAULT ''")
+    private String program = "";
+
     // Constructors
     public Income() {
         this.id = UUID.randomUUID(); // Generate UUID by default
     }
 
-    public Income(String name, int frequency, String description, BigDecimal amount, LocalDate date) {
+    public Income(String name, int frequency, String description, BigDecimal amount, LocalDate date,String program) {
         this.id = UUID.randomUUID(); // Generate UUID by default
         this.name = name;
         this.frequency = frequency;
         this.description = description;
         this.amount = amount; 
         this.date = date; 
+        this.program = program;
     }
 
     @PrePersist
@@ -99,6 +103,14 @@ public class Income {
         this.date = date; // Setter for date
     }
     
+    public String getProgram() {
+        return program;
+    }
+
+    public void setProgram(String program) {
+        this.program = program;
+    }
+
     public LocalDateTime getCreatedts() {
         return createdts;
     }
