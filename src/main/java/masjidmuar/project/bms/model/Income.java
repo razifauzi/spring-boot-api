@@ -34,12 +34,15 @@ public class Income {
     @Column(nullable = false, columnDefinition = "VARCHAR(255) DEFAULT ''")
     private String program = "";
 
+    @Column(nullable = false)
+    private String fileName;
+
     // Constructors
     public Income() {
         this.id = UUID.randomUUID(); // Generate UUID by default
     }
 
-    public Income(String name, int frequency, String description, BigDecimal amount, LocalDate date,String program) {
+    public Income(String name, int frequency, String description, BigDecimal amount, LocalDate date,String program,String fileName) {
         this.id = UUID.randomUUID(); // Generate UUID by default
         this.name = name;
         this.frequency = frequency;
@@ -47,6 +50,7 @@ public class Income {
         this.amount = amount; 
         this.date = date; 
         this.program = program;
+        this.fileName = fileName;
     }
 
     @PrePersist
@@ -113,5 +117,13 @@ public class Income {
 
     public LocalDateTime getCreatedts() {
         return createdts;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 }

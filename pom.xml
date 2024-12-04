@@ -52,23 +52,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>com.itextpdf</groupId>
-			<artifactId>itextpdf</artifactId>
-			<version>5.5.13.3</version>
-		</dependency>
-		<dependency>
-        <groupId>org.pentaho</groupId>
-        <artifactId>pentaho-pdi</artifactId>
-        <version>9.3.0.0-365</version>
-    </dependency>
 	</dependencies>
-	<repositories>
-		<repository>
-			<id>pentaho-repo</id>
-			<url>https://repository.pentaho.org/artifactory/repo</url>
-		</repository>
-	</repositories>
 
 	<build>
 		<plugins>
