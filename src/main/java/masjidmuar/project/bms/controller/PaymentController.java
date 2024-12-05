@@ -14,39 +14,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import masjidmuar.project.bms.dto.UserDTO;
-import masjidmuar.project.bms.service.UserService;
+import masjidmuar.project.bms.dto.PaymentDTO;
+import masjidmuar.project.bms.model.Payment;
+import masjidmuar.project.bms.service.PaymentService;
 
 @RestController
-@RequestMapping("/api/v1/users")
+@RequestMapping("/api/v1/payments")
 @CrossOrigin(origins = "http://localhost:3000")
-public class User2Controller {
+public class PaymentController {
     
     @Autowired
-    private UserService userService;
+    private PaymentService paymentService;
 
     @GetMapping
-    public List<UserDTO> getAllUsers() {
-        return userService.getAllUsers();
+    public List<PaymentDTO> getAllPayments() {
+        return paymentService.getAllPayments();
     }
 
     @GetMapping("/{id}")
-    public UserDTO getUserById(@PathVariable UUID id) {
-        return userService.getUserById(id);
+    public PaymentDTO getPaymentById(@PathVariable UUID id) {
+        return paymentService.getPaymentById(id);
     }
 
     @PostMapping
-    public UserDTO createUser(@RequestBody UserDTO userDTO) {
-        return userService.createUser(userDTO);
+    public PaymentDTO createPayment(@RequestBody PaymentDTO paymentDTO) {
+        return paymentService.createPayment(paymentDTO);
     }
 
     @PutMapping("/{id}")
-    public UserDTO updateUser(@PathVariable UUID id, @RequestBody UserDTO userDTO) {
-        return userService.updateUser(id, userDTO);
+    public PaymentDTO updatePayment(@PathVariable UUID id, @RequestBody PaymentDTO paymentDTO) {
+        return paymentService.updatePayment(id, paymentDTO);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable UUID id) {
-        userService.deleteUser(id);
+    public void deletePayment(@PathVariable UUID id) {
+        paymentService.deletePayment(id);
     }
+
 }
