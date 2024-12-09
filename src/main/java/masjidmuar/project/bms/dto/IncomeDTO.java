@@ -1,46 +1,20 @@
-package masjidmuar.project.bms.model;
-import jakarta.persistence.*;
+package masjidmuar.project.bms.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Entity
-@Table(name = "MUAR_INCOME")
-public class Income {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID) 
+public class IncomeDTO {
     private UUID id;
-
-    @Column(nullable = false, columnDefinition = "VARCHAR(255) DEFAULT ''")
     private String name = "";
-
-    @Column(nullable = false, columnDefinition = "INTEGER DEFAULT 0")
     private int frequency = 0;
-
-    @Column(nullable = false, columnDefinition = "TEXT DEFAULT ''")
     private String description = "";
-
-    @Column(nullable = false, precision = 19, scale = 2) 
     private BigDecimal amount = BigDecimal.ZERO; 
-
-    @Column(nullable = false)
     private LocalDate date;
-
-    @Column(nullable = false, updatable = false)
     private LocalDateTime createdts;
-
-    @Column(nullable = false, columnDefinition = "VARCHAR(255) DEFAULT ''")
     private String program = "";
-
-    @Column(nullable = false)
     private String fileName;
-
-    @PrePersist
-    protected void onCreate() {
-        this.createdts = LocalDateTime.now(); // Automatically set created timestamp
-    }
 
     // Getters and Setters
     public UUID getId() {
@@ -110,4 +84,6 @@ public class Income {
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
+
+
 }
