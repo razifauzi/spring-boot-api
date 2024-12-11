@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import masjidmuar.project.bms.dto.PaymentDTO;
-import masjidmuar.project.bms.model.Payment;
 import masjidmuar.project.bms.service.PaymentService;
 
 @RestController
