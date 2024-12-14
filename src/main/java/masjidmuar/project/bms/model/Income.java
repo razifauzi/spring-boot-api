@@ -25,7 +25,7 @@ public class Income {
     @Column(nullable = false, precision = 19, scale = 2) 
     private BigDecimal amount = BigDecimal.ZERO; 
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private LocalDate date;
 
     @Column(nullable = false, updatable = false)
