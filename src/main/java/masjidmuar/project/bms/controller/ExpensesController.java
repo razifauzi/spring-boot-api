@@ -19,7 +19,7 @@ import masjidmuar.project.bms.service.ExpensesService;
 
 @RestController
 @RequestMapping("/api/v1/expenses") 
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("https://cmssolution.com.my")
 public class ExpensesController {
 
     @Autowired

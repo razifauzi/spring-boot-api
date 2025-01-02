@@ -19,7 +19,7 @@ import masjidmuar.project.bms.service.VendorService;
 
 @RestController
 @RequestMapping("/api/v1/vendor") 
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("https://cmssolution.com.my")
 public class VendorController {
 
     @Autowired

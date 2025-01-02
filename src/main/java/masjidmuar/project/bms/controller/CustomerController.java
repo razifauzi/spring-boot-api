@@ -19,7 +19,7 @@ import masjidmuar.project.bms.service.CustomerService;
 
 @RestController
 @RequestMapping("/api/v1/customer") 
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("https://cmssolution.com.my")
 public class CustomerController {
 
     @Autowired
