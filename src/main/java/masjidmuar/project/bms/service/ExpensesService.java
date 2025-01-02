@@ -1,5 +1,6 @@
 package masjidmuar.project.bms.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import masjidmuar.project.bms.dto.ExpensesDTO;
+import masjidmuar.project.bms.dto.RunningNumberDTO;
 import masjidmuar.project.bms.model.Expenses;
 import masjidmuar.project.bms.repository.ExpensesRepository;
 
@@ -15,6 +17,9 @@ import masjidmuar.project.bms.repository.ExpensesRepository;
 public class ExpensesService {
      @Autowired
     private ExpensesRepository expensesRepository;
+
+    @Autowired
+    private RunningNumberService runningNumberService;
 
     public List<ExpensesDTO> getAllExpenses() {
         return expensesRepository.findAll()
@@ -31,6 +36,8 @@ public class ExpensesService {
 
     public ExpensesDTO createExpenses(ExpensesDTO expensesDTO) {
         Expenses expenses = mapToEntity(expensesDTO);
+        String expensesPrefix = generateExpensesPrefix();
+        expenses.setExpensesPrefix(expensesPrefix);
         expensesRepository.save(expenses);
         return mapToDTO(expenses);
     }
@@ -44,6 +51,7 @@ public class ExpensesService {
                                            expenses.setFrequency(expensesDTO.getFrequency());
                                            expenses.setFileName(expensesDTO.getFileName());
                                            expenses.setProgram(expensesDTO.getProgram());
+                                           expenses.setUpdatedts(LocalDateTime.now());
         expensesRepository.save(expenses);
         return mapToDTO(expenses);
     }
@@ -61,6 +69,10 @@ public class ExpensesService {
         dto.setFrequency(expenses.getFrequency());
         dto.setFileName(expenses.getFileName());
         dto.setProgram(expenses.getProgram());
+        dto.setCreatedts(expenses.getCreatedts());
+        dto.setUpdatedts(expenses.getUpdatedts());
+        dto.setExpensesPrefix(expenses.getExpensesPrefix());
+        dto.setDate(expenses.getDate());
         return dto;
     }
 
@@ -73,5 +85,10 @@ public class ExpensesService {
         expenses.setFileName(dto.getFileName());
         expenses.setProgram(dto.getProgram());
         return expenses;
+    }
+
+         private String generateExpensesPrefix() {
+        RunningNumberDTO runningNumberDTO = runningNumberService.incrementRunningNumber("EXP");
+        return "EXP-" + String.format("%06d", runningNumberDTO.getCurrentNumber());
     }
 }

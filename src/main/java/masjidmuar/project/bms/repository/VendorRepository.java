@@ -1,11 +1,14 @@
 package masjidmuar.project.bms.repository;
 
-import masjidmuar.project.bms.model.User;
+import java.util.UUID;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.UUID;
+import masjidmuar.project.bms.model.Vendor;
+
+
 
 @Repository
-public interface UserRepository extends JpaRepository<User, UUID> {
+public interface VendorRepository extends JpaRepository<Vendor, UUID> {
 }

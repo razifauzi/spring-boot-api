@@ -14,40 +14,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import masjidmuar.project.bms.dto.PaymentDTO;
-import masjidmuar.project.bms.service.PaymentService;
+import masjidmuar.project.bms.dto.BudgetDTO;
+import masjidmuar.project.bms.service.BudgetService;
 
 @RestController
-@RequestMapping("/api/v1/payments")
-@CrossOrigin(origins = "http://localhost:3000")
-public class PaymentController {
-    
+@RequestMapping("/api/v1/budget") 
+@CrossOrigin("http://localhost:3000")
+public class BudgetController {
+
     @Autowired
-    private PaymentService paymentService;
+    private BudgetService budgetService;
 
     @GetMapping
-    public List<PaymentDTO> getAllPayments() {
-        return paymentService.getAllPayments();
+    public List<BudgetDTO> getAllBudgets() {
+        return budgetService.getAllBudget();
     }
 
     @GetMapping("/{id}")
-    public PaymentDTO getPaymentById(@PathVariable UUID id) {
-        return paymentService.getPaymentById(id);
+    public BudgetDTO getBudgetById(@PathVariable UUID id) {
+        return budgetService.getBudgetById(id);
     }
 
     @PostMapping
-    public PaymentDTO createPayment(@RequestBody PaymentDTO paymentDTO) {
-        return paymentService.createPayment(paymentDTO);
+    public BudgetDTO createBudget(@RequestBody BudgetDTO BudgetDTO) {
+        return budgetService.createBudget(BudgetDTO);
     }
 
     @PutMapping("/{id}")
-    public PaymentDTO updatePayment(@PathVariable UUID id, @RequestBody PaymentDTO paymentDTO) {
-        return paymentService.updatePayment(id, paymentDTO);
+    public BudgetDTO updateBudget(@PathVariable UUID id, @RequestBody BudgetDTO BudgetDTO) {
+        return budgetService.updateBudget(id, BudgetDTO);
     }
 
     @DeleteMapping("/{id}")
-    public void deletePayment(@PathVariable UUID id) {
-        paymentService.deletePayment(id);
+    public void deleteBudget(@PathVariable UUID id) {
+        budgetService.deleteBudget(id);
     }
 
 }

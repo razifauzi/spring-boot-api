@@ -13,8 +13,10 @@ public class ExpensesDTO {
     private BigDecimal amount = BigDecimal.ZERO; 
     private LocalDate date;
     private LocalDateTime createdts;
+    private LocalDateTime updatedts; 
     private String program = "";
     private String fileName;
+    private String expensesPrefix;
 
     // Getters and Setters
     public UUID getId() {
@@ -77,11 +79,31 @@ public class ExpensesDTO {
         return createdts;
     }
 
+    public void setCreatedts(LocalDateTime createdts) {
+        this.createdts = createdts;
+    }
+
+    public LocalDateTime getUpdatedts() {
+        return updatedts;
+    }
+
+    public void setUpdatedts(LocalDateTime updatedts) {
+        this.updatedts = updatedts;
+    }
+
     public String getFileName() {
         return fileName;
     }
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    public String getExpensesPrefix() {
+        return expensesPrefix;
+    }
+
+    public void setExpensesPrefix(String expensesPrefix) {
+        this.expensesPrefix = expensesPrefix;
     }
 }

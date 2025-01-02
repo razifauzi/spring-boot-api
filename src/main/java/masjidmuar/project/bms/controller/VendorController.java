@@ -14,39 +14,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import masjidmuar.project.bms.dto.UserDTO;
-import masjidmuar.project.bms.service.UserService;
+import masjidmuar.project.bms.dto.VendorDTO;
+import masjidmuar.project.bms.service.VendorService;
 
 @RestController
-@RequestMapping("/api/v1/users")
-@CrossOrigin(origins = "http://localhost:3000")
-public class User2Controller {
-    
+@RequestMapping("/api/v1/vendor") 
+@CrossOrigin("http://localhost:3000")
+public class VendorController {
+
     @Autowired
-    private UserService userService;
+    private VendorService vendorService;
 
     @GetMapping
-    public List<UserDTO> getAllUsers() {
-        return userService.getAllUsers();
+    public List<VendorDTO> getAllVendors() {
+        return vendorService.getAllVendors();
     }
 
     @GetMapping("/{id}")
-    public UserDTO getUserById(@PathVariable UUID id) {
-        return userService.getUserById(id);
+    public VendorDTO getIncomeById(@PathVariable UUID id) {
+        return vendorService.getVendorById(id);
     }
 
     @PostMapping
-    public UserDTO createUser(@RequestBody UserDTO userDTO) {
-        return userService.createUser(userDTO);
+    public VendorDTO createIncome(@RequestBody VendorDTO vendorDTO) {
+        return vendorService.createVendor(vendorDTO);
     }
 
     @PutMapping("/{id}")
-    public UserDTO updateUser(@PathVariable UUID id, @RequestBody UserDTO userDTO) {
-        return userService.updateUser(id, userDTO);
+    public VendorDTO updateIncome(@PathVariable UUID id, @RequestBody VendorDTO vendorDTO) {
+        return vendorService.updateVendor(id, vendorDTO);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable UUID id) {
-        userService.deleteUser(id);
+    public void deleteIncome(@PathVariable UUID id) {
+        vendorService.deleteVendor(id);
     }
+
 }

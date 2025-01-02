@@ -19,7 +19,7 @@ import masjidmuar.project.bms.service.IncomeService;
 
 @RestController
 @RequestMapping("/api/v1/income") 
-@CrossOrigin("https://cmssolution.com.my")
+@CrossOrigin("http://localhost:3000")
 public class IncomeController {
 
     @Autowired

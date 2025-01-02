@@ -14,39 +14,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import masjidmuar.project.bms.dto.ExpensesDTO;
-import masjidmuar.project.bms.service.ExpensesService;
+import masjidmuar.project.bms.dto.CustomerDTO;
+import masjidmuar.project.bms.service.CustomerService;
 
 @RestController
-@RequestMapping("/api/v1/expenses") 
+@RequestMapping("/api/v1/customer") 
 @CrossOrigin("http://localhost:3000")
-public class ExpensesController {
+public class CustomerController {
 
     @Autowired
-    private ExpensesService expensesService;
+    private CustomerService customerService;
 
     @GetMapping
-    public List<ExpensesDTO> getAllExpenses() {
-        return expensesService.getAllExpenses();
+    public List<CustomerDTO> getAllCustomers() {
+        return customerService.getAllCustomers();
     }
 
     @GetMapping("/{id}")
-    public ExpensesDTO getExpensesById(@PathVariable UUID id) {
-        return expensesService.getExpensesById(id);
+    public CustomerDTO getCustomerById(@PathVariable UUID id) {
+        return customerService.getCustomerById(id);
     }
 
     @PostMapping
-    public ExpensesDTO createExpenses(@RequestBody ExpensesDTO expensesDTO) {
-        return expensesService.createExpenses(expensesDTO);
+    public CustomerDTO createCustomer(@RequestBody CustomerDTO customerDTO) {
+        return customerService.createCustomer(customerDTO);
     }
 
     @PutMapping("/{id}")
-    public ExpensesDTO updateExpenses(@PathVariable UUID id, @RequestBody ExpensesDTO expensesDTO) {
-        return expensesService.updateExpenses(id, expensesDTO);
+    public CustomerDTO updateCustomer(@PathVariable UUID id, @RequestBody CustomerDTO customerDTO) {
+        return customerService.updateCustomer(id, customerDTO);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteExpenses(@PathVariable UUID id) {
-        expensesService.deleteExpenses(id);
+    public void deleteCustomer(@PathVariable UUID id) {
+        customerService.deleteCustomer(id);
     }
+
 }

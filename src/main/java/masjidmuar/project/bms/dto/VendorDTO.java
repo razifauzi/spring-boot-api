@@ -1,66 +1,21 @@
-package masjidmuar.project.bms.model;
+package masjidmuar.project.bms.dto;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(name = "EXPENSES")
-public class Expenses {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID) 
+public class VendorDTO {
     private UUID id;
-
-    @Column(nullable = false, columnDefinition = "VARCHAR(255) DEFAULT ''")
     private String name = "";
-
-    @Column(nullable = false, columnDefinition = "INTEGER DEFAULT 0")
     private int frequency = 0;
-
-    @Column(nullable = false, columnDefinition = "TEXT DEFAULT ''")
     private String description = "";
-
-    @Column(nullable = false, precision = 19, scale = 2) 
     private BigDecimal amount = BigDecimal.ZERO; 
-
-    @Column(nullable = false)
-    private LocalDate date = LocalDate.of(1970, 1, 1); 
-
-    @Column(nullable = false, updatable = false) 
+    private LocalDate date;
     private LocalDateTime createdts;
-
-    @Column(nullable = false)
-    private LocalDateTime updatedts;
-
-    @Column(nullable = false, columnDefinition = "VARCHAR(255) DEFAULT ''")
+    private LocalDateTime updatedts; 
     private String program = "";
-
-    @Column(nullable = false)
     private String fileName;
-
-    @Column(nullable = false, columnDefinition = "VARCHAR(255) DEFAULT ''")
-    private String expensesPrefix;
-
-    @PrePersist
-    protected void onCreate() {
-        this.createdts = LocalDateTime.now(); 
-        this.updatedts = LocalDateTime.now(); 
-    }
-
-
-      @PreUpdate
-    protected void onUpdate() {
-        this.updatedts = LocalDateTime.now(); // Automatically set updated timestamp
-    }
 
     // Getters and Setters
     public UUID getId() {
@@ -123,6 +78,10 @@ public class Expenses {
         return createdts;
     }
 
+    public void setCreatedts(LocalDateTime createdts) {
+        this.createdts = createdts;
+    }
+    
     public LocalDateTime getUpdatedts() {
         return updatedts;
     }
@@ -139,11 +98,5 @@ public class Expenses {
         this.fileName = fileName;
     }
 
-    public String getExpensesPrefix() {
-        return expensesPrefix;
-    }
 
-    public void setExpensesPrefix(String expensesPrefix) {
-        this.expensesPrefix = expensesPrefix;
-    }
 }

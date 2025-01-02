@@ -14,8 +14,8 @@ import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "EXPENSES")
-public class Expenses {
+@Table(name = "VENDOR")
+public class Vendor {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID) 
     private UUID id;
@@ -47,17 +47,13 @@ public class Expenses {
     @Column(nullable = false)
     private String fileName;
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(255) DEFAULT ''")
-    private String expensesPrefix;
-
     @PrePersist
     protected void onCreate() {
         this.createdts = LocalDateTime.now(); 
         this.updatedts = LocalDateTime.now(); 
     }
 
-
-      @PreUpdate
+    @PreUpdate
     protected void onUpdate() {
         this.updatedts = LocalDateTime.now(); // Automatically set updated timestamp
     }
@@ -130,20 +126,12 @@ public class Expenses {
     public void setUpdatedts(LocalDateTime updatedts) {
         this.updatedts = updatedts;
     }
-
+    
     public String getFileName() {
         return fileName;
     }
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
-    }
-
-    public String getExpensesPrefix() {
-        return expensesPrefix;
-    }
-
-    public void setExpensesPrefix(String expensesPrefix) {
-        this.expensesPrefix = expensesPrefix;
     }
 }
