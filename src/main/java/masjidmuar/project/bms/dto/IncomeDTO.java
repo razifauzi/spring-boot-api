@@ -1,7 +1,6 @@
 package masjidmuar.project.bms.dto;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -11,12 +10,13 @@ public class IncomeDTO {
     private int frequency = 0;
     private String description = "";
     private BigDecimal amount = BigDecimal.ZERO; 
-    private LocalDate date;
     private LocalDateTime createdts;
     private LocalDateTime updatedts; 
-    private String program = "";
+    private String category = "";
+    private String paymentMethod = "";
     private String fileName;
     private String incomePrefix;
+    private LocalDateTime receivedts; 
 
 
     // Getters and Setters
@@ -60,22 +60,6 @@ public class IncomeDTO {
         this.amount = amount; // Setter for amount
     }
 
-    public LocalDate getDate() {
-        return date; // Getter for date
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date; // Setter for date
-    }
-    
-    public String getProgram() {
-        return program;
-    }
-
-    public void setProgram(String program) {
-        this.program = program;
-    }
-
     public LocalDateTime getCreatedts() {
         return createdts;
     }
@@ -108,5 +92,29 @@ public class IncomeDTO {
         this.incomePrefix = incomePrefix;
     }
 
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
 
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public LocalDateTime getReceivedts() {
+        return receivedts;
+    }
+
+    public void setReceivedts(LocalDateTime receivedts) {
+        this.receivedts = receivedts;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    
 }

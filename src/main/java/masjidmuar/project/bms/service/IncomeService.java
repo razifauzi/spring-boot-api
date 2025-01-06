@@ -51,7 +51,7 @@ public class IncomeService {
         income.setDescription(IncomeDTO.getDescription());
         income.setFrequency(IncomeDTO.getFrequency());
         income.setFileName(IncomeDTO.getFileName());
-        income.setProgram(IncomeDTO.getProgram());
+        income.setCategory(IncomeDTO.getCategory());
         income.setUpdatedts(LocalDateTime.now());
         incomeRepository.save(income);
         return mapToDTO(income);
@@ -69,11 +69,12 @@ public class IncomeService {
         dto.setDescription(income.getDescription());
         dto.setFrequency(income.getFrequency());
         dto.setFileName(income.getFileName());
-        dto.setProgram(income.getProgram());
+        dto.setCategory(income.getCategory());
         dto.setCreatedts(income.getCreatedts());
         dto.setUpdatedts(income.getUpdatedts());
         dto.setIncomePrefix(income.getIncomePrefix());
-        dto.setDate(income.getDate());
+        dto.setPaymentMethod(income.getPaymentMethod());
+        dto.setReceivedts(income.getReceivedts());
         return dto;
     }
 
@@ -84,7 +85,9 @@ public class IncomeService {
         income.setDescription(dto.getDescription());
         income.setFrequency(dto.getFrequency());
         income.setFileName(dto.getFileName());
-        income.setProgram(dto.getProgram());
+        income.setCategory(dto.getCategory());
+        income.setPaymentMethod(dto.getPaymentMethod());
+        income.setReceivedts(dto.getReceivedts());
         return income;
     }
 

@@ -43,7 +43,14 @@ public class Income {
     private LocalDateTime updatedts;
 
     @Column(nullable = false, columnDefinition = "VARCHAR(255) DEFAULT ''")
-    private String program = "";
+    private String category = "";
+
+    @Column(nullable = false, columnDefinition = "VARCHAR(255) DEFAULT ''")
+    private String paymentMethod = "";
+
+    @Column(nullable = false)
+    private LocalDateTime receivedts;
+
 
     @Column(nullable = false)
     private String fileName;
@@ -114,12 +121,12 @@ public class Income {
         this.date = date; // Setter for date
     }
     
-    public String getProgram() {
-        return program;
+    public String getCategory() {
+        return category;
     }
 
-    public void setProgram(String program) {
-        this.program = program;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public LocalDateTime getCreatedts() {
@@ -157,4 +164,21 @@ public class Income {
     public void setIncomePrefix(String incomePrefix) {
         this.incomePrefix = incomePrefix;
     }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public LocalDateTime getReceivedts() {
+        return receivedts;
+    }
+
+    public void setReceivedts(LocalDateTime receivedts) {
+        this.receivedts = receivedts;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
 }
