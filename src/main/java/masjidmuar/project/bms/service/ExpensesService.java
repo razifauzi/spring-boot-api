@@ -50,7 +50,9 @@ public class ExpensesService {
                                            expenses.setDescription(expensesDTO.getDescription());
                                            expenses.setFrequency(expensesDTO.getFrequency());
                                            expenses.setFileName(expensesDTO.getFileName());
-                                           expenses.setProgram(expensesDTO.getProgram());
+                                           expenses.setCategory(expensesDTO.getCategory());
+                                           expenses.setIssuedts(expensesDTO.getIssuedts());
+                                           expenses.setPaymentMethod(expensesDTO.getPaymentMethod());
                                            expenses.setUpdatedts(LocalDateTime.now());
         expensesRepository.save(expenses);
         return mapToDTO(expenses);
@@ -68,10 +70,12 @@ public class ExpensesService {
         dto.setDescription(expenses.getDescription());
         dto.setFrequency(expenses.getFrequency());
         dto.setFileName(expenses.getFileName());
-        dto.setProgram(expenses.getProgram());
+        dto.setCategory(expenses.getCategory());
         dto.setCreatedts(expenses.getCreatedts());
         dto.setUpdatedts(expenses.getUpdatedts());
         dto.setExpensesPrefix(expenses.getExpensesPrefix());
+        dto.setIssuedts(expenses.getIssuedts());
+        dto.setPaymentMethod(expenses.getPaymentMethod());
         dto.setDate(expenses.getDate());
         return dto;
     }
@@ -83,7 +87,9 @@ public class ExpensesService {
         expenses.setDescription(dto.getDescription());
         expenses.setFrequency(dto.getFrequency());
         expenses.setFileName(dto.getFileName());
-        expenses.setProgram(dto.getProgram());
+        expenses.setCategory(dto.getCategory());
+        expenses.setIssuedts(dto.getIssuedts());
+        expenses.setPaymentMethod(dto.getPaymentMethod());
         return expenses;
     }
 

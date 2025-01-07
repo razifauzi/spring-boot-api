@@ -51,7 +51,6 @@ public class Income {
     @Column(nullable = false)
     private LocalDateTime receivedts;
 
-
     @Column(nullable = false)
     private String fileName;
 

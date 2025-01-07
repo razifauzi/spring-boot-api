@@ -14,7 +14,9 @@ public class ExpensesDTO {
     private LocalDate date;
     private LocalDateTime createdts;
     private LocalDateTime updatedts; 
-    private String program = "";
+    private String category = "";
+    private String paymentMethod = "";
+    private LocalDateTime issuedts;
     private String fileName;
     private String expensesPrefix;
 
@@ -67,14 +69,7 @@ public class ExpensesDTO {
         this.date = date; // Setter for date
     }
     
-    public String getProgram() {
-        return program;
-    }
-
-    public void setProgram(String program) {
-        this.program = program;
-    }
-
+    
     public LocalDateTime getCreatedts() {
         return createdts;
     }
@@ -106,4 +101,30 @@ public class ExpensesDTO {
     public void setExpensesPrefix(String expensesPrefix) {
         this.expensesPrefix = expensesPrefix;
     }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public LocalDateTime getIssuedts() {
+        return issuedts;
+    }
+
+    public void setIssuedts(LocalDateTime issuedts) {
+        this.issuedts = issuedts;
+    }
+
+    
 }

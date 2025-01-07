@@ -40,12 +40,9 @@ public class VendorService {
     public VendorDTO updateVendor(UUID id, VendorDTO VendorDTO) {
         Vendor vendor = vendorRepository.findById(id)
                                            .orElseThrow(() -> new RuntimeException("Vendor not found"));
-        vendor.setAmount(VendorDTO.getAmount());
         vendor.setName(VendorDTO.getName());
         vendor.setDescription(VendorDTO.getDescription());
-        vendor.setFrequency(VendorDTO.getFrequency());
         vendor.setFileName(VendorDTO.getFileName());
-        vendor.setProgram(VendorDTO.getProgram());
         vendor.setUpdatedts(LocalDateTime.now());
         vendorRepository.save(vendor);
         return mapToDTO(vendor);
@@ -58,26 +55,19 @@ public class VendorService {
     private VendorDTO mapToDTO(Vendor vendor) {
         VendorDTO dto = new VendorDTO();
         dto.setId(vendor.getId());
-        dto.setAmount(vendor.getAmount());
         dto.setName(vendor.getName());
         dto.setDescription(vendor.getDescription());
-        dto.setFrequency(vendor.getFrequency());
         dto.setFileName(vendor.getFileName());
-        dto.setProgram(vendor.getProgram());
         dto.setCreatedts(vendor.getCreatedts());
         dto.setUpdatedts(vendor.getUpdatedts());
-        dto.setDate(vendor.getDate());
         return dto;
     }
 
     private Vendor mapToEntity(VendorDTO dto) {
         Vendor vendor = new Vendor();
-        vendor.setAmount(dto.getAmount());
         vendor.setName(dto.getName());
         vendor.setDescription(dto.getDescription());
-        vendor.setFrequency(dto.getFrequency());
         vendor.setFileName(dto.getFileName());
-        vendor.setProgram(dto.getProgram());
         return vendor;
     }
 }

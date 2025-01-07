@@ -42,13 +42,19 @@ public class Expenses {
     private LocalDateTime updatedts;
 
     @Column(nullable = false, columnDefinition = "VARCHAR(255) DEFAULT ''")
-    private String program = "";
+    private String category = "";
+
+    @Column(nullable = false, columnDefinition = "VARCHAR(255) DEFAULT ''")
+    private String paymentMethod = "";
 
     @Column(nullable = false)
     private String fileName;
 
     @Column(nullable = false, columnDefinition = "VARCHAR(255) DEFAULT ''")
     private String expensesPrefix;
+
+    @Column(nullable = false)
+    private LocalDateTime issuedts;
 
     @PrePersist
     protected void onCreate() {
@@ -110,14 +116,16 @@ public class Expenses {
     public void setDate(LocalDate date) {
         this.date = date; // Setter for date
     }
-    
-    public String getProgram() {
-        return program;
+
+    public String getCategory() {
+        return category;
     }
 
-    public void setProgram(String program) {
-        this.program = program;
+
+    public void setCategory(String category) {
+        this.category = category;
     }
+
 
     public LocalDateTime getCreatedts() {
         return createdts;
@@ -146,4 +154,26 @@ public class Expenses {
     public void setExpensesPrefix(String expensesPrefix) {
         this.expensesPrefix = expensesPrefix;
     }
+
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+
+    public LocalDateTime getIssuedts() {
+        return issuedts;
+    }
+
+
+    public void setIssuedts(LocalDateTime issuedts) {
+        this.issuedts = issuedts;
+    }
+
+    
 }
