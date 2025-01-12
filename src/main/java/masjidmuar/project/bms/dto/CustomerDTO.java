@@ -16,7 +16,6 @@ public class CustomerDTO {
     private LocalDateTime updatedts; 
     private String customerType = "";
     private String salutation = "";
-    private String fileName;
     private String firstName = "";
     private String lastName = "";
     private String companyName = "";
@@ -98,14 +97,6 @@ public class CustomerDTO {
 
     public void setUpdatedts(LocalDateTime updatedts) {
         this.updatedts = updatedts;
-    }
-
-    public String getFileName() {
-        return fileName;
-    }
-
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
     }
 
     public String getFirstName() {

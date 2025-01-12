@@ -76,9 +76,6 @@ public class Customer {
     @Column(nullable = false, columnDefinition = "TEXT DEFAULT ''")
     private String shippingAddress = "";
 
-    @Column(nullable = false)
-    private String fileName;
-
     @OneToMany(mappedBy = "customer")
     private List<Income> incomes;
 
@@ -240,14 +237,6 @@ public class Customer {
 
     public void setUpdatedts(LocalDateTime updatedts) {
         this.updatedts = updatedts;
-    }
-    
-    public String getFileName() {
-        return fileName;
-    }
-
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
     }
 
     public List<Income> getIncomes() {

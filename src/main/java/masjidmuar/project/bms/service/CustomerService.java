@@ -44,7 +44,6 @@ public class CustomerService {
         customer.setName(CustomerDTO.getName());
         customer.setRemarks(CustomerDTO.getRemarks());
         customer.setFrequency(CustomerDTO.getFrequency());
-        customer.setFileName(CustomerDTO.getFileName());
         customer.setSalutation(CustomerDTO.getSalutation());
         customer.setCompanyName(CustomerDTO.getCompanyName());
         customer.setDisplayName(CustomerDTO.getDisplayName());
@@ -72,7 +71,6 @@ public class CustomerService {
         dto.setName(customer.getName());
         dto.setRemarks(customer.getRemarks());
         dto.setFrequency(customer.getFrequency());
-        dto.setFileName(customer.getFileName());
         dto.setSalutation(customer.getSalutation());
         dto.setCreatedts(customer.getCreatedts());
         dto.setCompanyName(customer.getCompanyName());
@@ -96,7 +94,6 @@ public class CustomerService {
         customer.setName(dto.getName());
         customer.setRemarks(dto.getRemarks());
         customer.setFrequency(dto.getFrequency());
-        customer.setFileName(dto.getFileName());
         customer.setSalutation(dto.getSalutation());
         customer.setCompanyName(dto.getCompanyName());
         customer.setDisplayName(dto.getDisplayName());
