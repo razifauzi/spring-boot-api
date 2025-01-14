@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.web.multipart.MultipartFile;
 import masjidmuar.project.bms.dto.IncomeDTO;
 import masjidmuar.project.bms.dto.RunningNumberDTO;
 import masjidmuar.project.bms.model.Income;
@@ -22,6 +22,10 @@ public class IncomeService {
     @Autowired
     private RunningNumberService runningNumberService;
 
+    @Autowired
+    private FileService fileService;
+
+
     public List<IncomeDTO> getAllIncomes() {
         return incomeRepository.findAll()
                                 .stream()
@@ -35,12 +39,20 @@ public class IncomeService {
         return mapToDTO(income);
     }
 
-    public IncomeDTO createIncome(IncomeDTO IncomeDTO) {
-        Income income = mapToEntity(IncomeDTO);
+    public IncomeDTO createIncome(IncomeDTO incomeDTO, MultipartFile file) throws Exception {
+        Income income = mapToEntity(incomeDTO);
         String incomePrefix = generateIncomePrefix();
         income.setIncomePrefix(incomePrefix);
+
+        // Handle file upload if a file is provided
+        if (file != null && !file.isEmpty()) {
+            String fileUrl = fileService.uploadFile(file);  // Save the file and get the URL
+            income.setFileName(fileUrl);  // Set the file URL in the income object
+        }
+
         incomeRepository.save(income);
         return mapToDTO(income);
+
     }
 
     public IncomeDTO updateIncome(UUID id, IncomeDTO IncomeDTO) {
